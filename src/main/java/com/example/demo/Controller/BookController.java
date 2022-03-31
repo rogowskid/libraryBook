@@ -132,7 +132,7 @@ public class BookController {
         for(Object[] obj : recentBooks)
         {
 
-            borrowBook.add(new BorrowBook(obj[0].toString(),obj[1].toString(),obj[2].toString(),obj[3].toString(), obj[4].toString()));
+            borrowBook.add(new BorrowBook(obj[0].toString(),obj[1].toString(),obj[2].toString(),obj[3].toString(), obj[4].toString(), obj[5].toString()));
 
         }
 

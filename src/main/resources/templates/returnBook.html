@@ -28,15 +28,14 @@
 
     <div id="aside">
         <h2><a href="/listofbook"> Spis książek</a></h2>
-
         <h2><a href="/returnbook">Zwróć książke</a></h2>
-        <h2><a href="/logout">Wyloguj sie</a></h2>
+        <h2><a href="/logout" style="color: #FF9400; font-size: 22px;">Wyloguj sie</a></h2>
     </div>
 
     <div id="main">
         <h3 style="text-align:center" th:text="${emptyBorrowBook}"></h3>
         <div th:each="borrowBook : ${borrowBooks}" id="nvm">
-            <p th:text="${borrowBook.nameBook + ' ' + borrowBook.authorBok + ' ' + borrowBook.yearofPub + ' ' + borrowBook.ISBN}"
+            <p th:text="${borrowBook.nameBook + ' ' + borrowBook.authorBok + ' ' + borrowBook.yearofPub + ' ' + borrowBook.ISBN + ' ' + borrowBook.dateofRet}"
                id="testData"  >
             </p><button  th:attr="data-idUser=${borrowBook.idUser}" onclick="myFunction(this.getAttribute('data-idUser'))">Zwróć</button>
 

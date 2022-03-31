@@ -9,7 +9,7 @@ import java.util.List;
 public interface RecentBookRepository  extends JpaRepository<RecentBook, Long> {
 
     @Query(nativeQuery = true, value = "select recent_book.id_user, book.name_book, book.author, book.yearof_publication, " +
-            "book.isbn from recent_book " +
+            "book.isbn, recent_book.date_of_return from recent_book " +
             "inner join book on recent_book.id_book = book.id_book " +
             "where recent_book.id_user = ?1")
     public List<Object[]> customQuery(Long idUser);

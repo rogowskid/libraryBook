@@ -66,44 +66,7 @@ public class UserController {
 
     }
 
-   /* @PostMapping("/login")
-    public String accessLogin(@ModelAttribute UserData userData) throws Exception {
 
-        String loginName = userData.getUserLogin();
-        String passwordName = userData.getUserPassword();
-
-        //List<UserData> userFind = userRepository.findByuserLogin(loginName);
-
-        if (userFind.isEmpty()) {
-
-            System.out.println("List is empty!");
-
-        } else {
-
-            UserData user = userFind.get(0);
-            String loginNameDataBase = user.getUserLogin();
-
-
-            if (loginName.equals(loginNameDataBase))
-            {
-                String passwordNameDataBase = user.getUserPassword();
-                if(passwordName.equals(passwordNameDataBase))
-                {
-
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", user.getIdUser());
-                    return "redirect:/main";
-                }
-
-
-            }
-
-
-
-
-        }
-        return "redirect:/login";
-    }*/
 
 
 

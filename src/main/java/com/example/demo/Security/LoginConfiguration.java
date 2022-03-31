@@ -39,16 +39,16 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
                     .loginPage("/login").defaultSuccessUrl("/main", true)
                     .usernameParameter("login")
                     .passwordParameter("password")
-
                     .permitAll()
+                .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                     .logout().permitAll()
                     .logoutUrl("/logout")
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID")
-                .and()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+                    .invalidateHttpSession(true);
+
+
 
 
 

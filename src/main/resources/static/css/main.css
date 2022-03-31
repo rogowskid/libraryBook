@@ -4,46 +4,69 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: crimson;
+    background-color: #162F4D;
+    color: #FF9400;
+    font-size: 28px;
+    font-family: Arial;
 }
 
 #aside{
     float: left;
     left:auto;
-    height: 900px;
+    height: 940px;
     width: 11%;
     text-align: center;
-    background-color:gray;
+    background-color:#1F436E;
     
 }
 #aside a
 {
     text-decoration: none;
+    font-family: Arial;
+
+    color: #A3CDFF;
+    font-size: 26px;
 }
 #main{
-    
+
     float: left;
-    height: 900px;
+    height: 940px;
     width: 89%;
-    background-color:cadetblue;
+    background-color:#A3CDFF;
   
    
 }
-#main p 
+#main p
 {
     font-size: 26px;
     text-align: center;
-}
 
+    font-family: Arial;
+}
+#main label
+{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 26px;
+    font-family: Arial;
+}
 #footer
 {
     clear: both;
     width: 100%;
     height: auto;
-    background-color: palegoldenrod;
+    background-color: #FFC14D;
     text-align: center;
     bottom: 0;
+    color: #162F4D;
 
+}
+#footer span p
+{
+    color: #162F4D;
+    font-size: 18px;
 }
 button
 {
@@ -51,4 +74,34 @@ button
     margin-left: auto;
     margin-right: auto;
 
+}
+
+input
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bookList
+{
+    overflow: auto;
+    margin: auto;
+    width: 70%;
+    border: 3px solid #162F4D;
+    padding: 10px;
+    max-height: 525px;
+}
+
+#centerTitle
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#testData
+{
+    color: #FF9400;
+    font-family: Arial;
+    font-weight: bold;
 }

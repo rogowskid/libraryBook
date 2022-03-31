@@ -1,5 +1,3 @@
-INSERT INTO user_data (user_login, user_password, name_user, sur_name_user, date_of_birthday) values ('user123', 'user', 'Albert', 'Bok', '1999-02-14');
-INSERT INTO user_data (user_login, user_password, name_user, sur_name_user, date_of_birthday) values ('radek23', 'admin', 'Roman', 'Fajny', '1969-04-24');
 INSERT INTO Book (name_Book, author, yearof_Publication, ISBN) values ('Pan Tadeusz', 'Adam Mickiewicz', 1834, '9788375650891');
 INSERT INTO Book (name_Book, author, yearof_Publication, ISBN) values ('Krzyżacy', 'Henryk Sienkewicz', 1900, '9788365875617');
 INSERT INTO Book (name_Book, author, yearof_Publication, ISBN) values ('Zbrodnia i Kara', 'Fiodor Dostojewski', 1866, '9788377917275');

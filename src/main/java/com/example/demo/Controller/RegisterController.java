@@ -34,7 +34,7 @@ public class RegisterController {
 
         userRepository.save(new UserData(userData.getUserLogin(), passwordEncoder.encode(userData.getUserPassword()),
                 userData.getNameUser(), userData.getSurNameUser(), userData.getDateOfBirthday()));
-        //System.out.println(userRepository.findById(1).get());
+
         return "redirect:/login";
     }
 
