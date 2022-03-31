@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Biblioteka</title>
+    <style>
+
+
+        #header
+        {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: crimson;
+        }
+
+        #aside{
+            float: left;
+            left:auto;
+            height: 940px;
+            width: 11%;
+            text-align: center;
+            background-color:gray;
+
+        }
+        #aside a
+        {
+            text-decoration: none;
+        }
+        #main{
+
+            float: left;
+            height: 940px;
+            width: 89%;
+            background-color:cadetblue;
+
+
+        }
+
+        #main form
+        {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5%;
+        }
+        #main p
+        {
+            font-size: 26px;
+            text-align: center;
+        }
+
+        #footer
+        {
+            clear: both;
+            width: 100%;
+            height: auto;
+            background-color: palegoldenrod;
+            text-align: center;
+            bottom: 0;
+
+        }
+        button
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="header">
+
+    <h1>Biblioteka Główna</h1>
+
+</div>
+
+<div id="aside">
+    <!--<h2><a href="/listofbook"> Spis książek</a></h2>
+    <h2><a href="/rentbook">Wypożycz książke </a></h2>
+    <h2><a href="/returnbook">Zwróć książke</a></h2>
+    <h2><a href="/login">Wyloguj sie</a></h2>-->
+</div>
+
+<div id="main">
+
+    <form th:action="@{/register}" th:object="${addUser}"  method="POST">
+        <label>Login:</label>
+        <br>
+        <input type="text" th:field="*{userLogin}"><br>
+        <label>Hasło:</label>
+        <br>
+        <input type="password" th:field="*{userPassword}"><br>
+        <label>Imie:</label>
+        <br>
+        <input type="text" th:field="*{nameUser}"><br>
+        <label>Nazwisko:</label>
+        <br>
+        <input type="text" th:field="*{surNameUser}"><br>
+        <label>Data urodzenia:</label>
+        <br>
+        <input type="date" th:field="*{dateOfBirthday}"><br>
+        <input type="submit" value="Zarejestruj">
+    </form>
+    <br>
+    <br>
+    <button onclick="goLogin()">Zaloguj sie</button>
+</div>
+
+
+
+<div id="footer">
+        <span>Zadanie wykonane przez:
+            <p>Daniel Rogowski  © 2022</p>
+        </span>
+
+</div>
+<script>
+
+
+    function goLogin()
+    {
+        window.location="/login";
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>Biblioteka</title>
+<style>
+
+   #centerTitle
+   {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+   #testData
+   {
+       color: red;
+   }
+
+</style>
+
+</head>
+<body>
+    <div id="header">
+
+        <h1>Biblioteka Główna</h1>
+
+    </div>
+
+    <div id="aside">
+        <h2><a href="/listofbook"> Spis książek</a></h2>
+
+        <h2><a href="/returnbook">Zwróć książke</a></h2>
+        <h2><a href="/logout">Wyloguj sie</a></h2>
+    </div>
+
+    <div id="main">
+        
+        <p>Spis książek w naszej księgarni:</p>
+        <div th:each="book : ${bookOfBorrow}" id="nvm">
+            <p th:text="${book.nameBook + ' ' + book.author + ' ' + book.yearofPublication + ' ' + book.ISBN}"
+               id="testData" th:attr="data-idBook=${book.idBook}" >
+            </p>
+        <div id="centerTitle">
+            <h2>Czy na pewno chcesz wypożyczyć tą książke?</h2>
+
+                <button th:attr="data-idBook=${book.idBook}" onclick="rentBook(this.getAttribute('data-idBook'))">Wypożycz</button>
+
+
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+     </div>
+  
+   
+   
+    <div id="footer">
+        <span>Zadanie wykonane przez: 
+            <p>Daniel Rogowski  © 2022</p>
+        </span>
+
+    </div>
+<script>
+
+
+    function rentBook(idBook)
+    {
+
+        window.location.href="/rentbook?idbook=" + idBook;
+
+    }
+
+</script>
+</body>
+</html>

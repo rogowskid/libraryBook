@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>Biblioteka</title>
+</head>
+<body>
+<div id="header">
+
+    <h1>Biblioteka Główna</h1>
+
+</div>
+
+<div id="aside">
+    <h2><a href="/listofbook"> Spis książek</a></h2>
+    <h2><a href="/rentbook">Wypożycz książke </a></h2>
+    <h2><a href="/returnbook">Zwróć książke</a></h2>
+    <h2><a href="/login">Wyloguj sie</a></h2>
+</div>
+
+<div id="main">
+
+
+
+      <form th:action="@{/addbook}"  th:object="${book}" method="POST">
+          <label>Tytuł:</label>
+          <br>
+          <input type="text" th:field="*{nameBook}"><br><br>
+          <label>Autor:</label>
+          <br>
+          <input type="text" th:field="*{author}"><br><br>
+          <label>Rok wydania:</label>
+          <br>
+          <input type="number" maxlength="9999999999999" th:field="*{yearofPublication}"><br>
+          <label>Number IBSN:</label>
+          <br>
+          <input type="text"  th:field="*{ISBN}"><br><br>
+
+          <input type="submit" value="Submit">
+      </form>
+
+</div>
+
+
+
+<div id="footer">
+        <span>Zadanie wykonane przez:
+            <p>Daniel Rogowski  © 2022</p>
+        </span>
+
+</div>
+</body>
+</html>

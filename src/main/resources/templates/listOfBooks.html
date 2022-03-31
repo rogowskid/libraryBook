@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>Biblioteka</title>
+
+    <style>
+
+        p
+        {
+            text-align: center;
+        }
+
+
+        button
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        input
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #bookList
+        {
+            overflow: scroll;
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+            max-height: 550px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div id="header">
+
+        <h1>Biblioteka Główna</h1>
+
+    </div>
+
+    <div id="aside">
+        <h2><a href="/listofbook"> Spis książek</a></h2>
+
+            <h2><a href="/returnbook">Zwróć książke</a></h2>
+            <h2><a href="/logout">Wyloguj sie</a></h2>
+    </div>
+
+    <div id="main">
+        
+        <p>Spis książek w naszej księgarni:</p>
+
+        <p>Wpisz książke aby ją wyszukać:</p>
+        <br>
+        <input style="margin: auto" type="text" id="filterPosition">
+        <br>
+        <button onclick="findBook()">Wyszukaj</button>
+        <br>
+
+
+
+
+
+    <div id="bookList">
+        <div th:each="book : ${books}">
+
+            <p th:text="${book.idBook + ' ' + book.nameBook + ' ' + book.author + ' ' + book.yearofPublication + ' ' + book.ISBN}"
+               id="testData" >
+            </p>
+            <button  th:attr="data-idBook=${book.idBook}" onclick="myFunction(this.getAttribute('data-idBook'))">Wypożycz</button>
+
+        </div>
+    </div>
+
+
+
+ 
+     </div>
+  
+   
+   
+    <div id="footer">
+        <span>Zadanie wykonane przez: 
+            <p>Daniel Rogowski  © 2022</p>
+        </span>
+
+    </div>
+
+<script>
+function myFunction(idBook)
+{
+    window.location.href="/rentbooks?id=" + idBook;
+}
+
+function findBook()
+{
+    let nameBook = document.getElementById('filterPosition').value;
+    window.location.href="/listofbookfilter?id=" + nameBook;
+}
+
+</script>
+</body>
+</html>

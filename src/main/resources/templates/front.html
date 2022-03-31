@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>Biblioteka</title>
+</head>
+<body>
+    <div id="header">
+
+        <h3>Biblioteka Główna</h3>
+
+    </div>
+
+    <div id="aside">
+        <h2><a href="/listofbook"> Spis książek</a></h2>
+
+        <h2><a href="/returnbook">Zwróć książke</a></h2>
+        <h2><a href="/logout">Wyloguj sie</a></h2>
+    </div>
+
+    <div id="main">
+
+            <p>Witaj w naszej bibliotece  <p th:text="${nameUser}">
+           </p></p>
+
+
+ 
+     </div>
+  
+   
+   
+    <div id="footer">
+        <span>Zadanie wykonane przez: 
+            <p>Daniel Rogowski  © 2022</p>
+        </span>
+
+    </div>
+</body>
+</html>

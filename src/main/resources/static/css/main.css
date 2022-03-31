@@ -1,0 +1,54 @@
+#header
+{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: crimson;
+}
+
+#aside{
+    float: left;
+    left:auto;
+    height: 900px;
+    width: 11%;
+    text-align: center;
+    background-color:gray;
+    
+}
+#aside a
+{
+    text-decoration: none;
+}
+#main{
+    
+    float: left;
+    height: 900px;
+    width: 89%;
+    background-color:cadetblue;
+  
+   
+}
+#main p 
+{
+    font-size: 26px;
+    text-align: center;
+}
+
+#footer
+{
+    clear: both;
+    width: 100%;
+    height: auto;
+    background-color: palegoldenrod;
+    text-align: center;
+    bottom: 0;
+
+}
+button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
