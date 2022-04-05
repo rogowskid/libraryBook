@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/main.css}" rel="stylesheet" />
     <title>Biblioteka</title>
+
+    <style>
+
+        #printList
+        {
+            margin-top: 10px;
+            width: 60%;
+        }
+
+    </style>
 </head>
 <body>
 <div id="header">
@@ -25,26 +35,25 @@
 
 
 <div id="main">
+    <div id="printList">
+        <table>
+            <tr>
+                <th>Login użytkownika</th> <th>Imie użytkownika</th> <th>Nazwisko użytkownika</th> <th>Data urodzenia</th>
+            </tr>
+            <div th:each="user : ${users}">
 
+                <tr>
+                    <td th:text="${user.userLogin}"/> <td th:text="${user.nameUser}"/> <td th:text="${user.surNameUser}"/> <td th:text="${user.dateOfBirthday}"/>
 
+                    <td>
+                        <button  th:attr="data-idUser=${user.idUser}" onclick="myFunction(this.getAttribute('data-idUser'))">Usun</button>
+                    </td>
+                </tr>
 
-      <form th:action="@{/addbook}"  th:object="${book}" method="POST">
-          <label>Tytuł:</label>
-          <br>
-          <input type="text" th:field="*{nameBook}"><br><br>
-          <label>Autor:</label>
-          <br>
-          <input type="text" th:field="*{author}"><br><br>
-          <label>Rok wydania:</label>
-          <br>
-          <input type="number" maxlength="9999999999999" th:field="*{yearofPublication}"><br>
-          <label>Number IBSN:</label>
-          <br>
-          <input type="text"  th:field="*{ISBN}"><br><br>
+            </div>
+        </table>
 
-          <input type="submit" value="Submit">
-      </form>
-
+    </div>
 </div>
 
 
@@ -55,5 +64,14 @@
         </span>
 
 </div>
+
+<script>
+
+    function myFunction(idUser)
+    {
+        window.location.href="/userdelete?id=" + idUser;
+    }
+
+</script>
 </body>
 </html>

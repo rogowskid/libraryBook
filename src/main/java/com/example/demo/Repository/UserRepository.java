@@ -14,5 +14,6 @@ public interface UserRepository  extends JpaRepository<UserData, Integer> {
    //public List<UserData> findByuserLogin(String userLogin);
 
    public UserData findByuserLogin(String userLogin);
+   List<UserData> findByuserLoginNotContaining(String username);
 
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -18,7 +19,9 @@
 
     <div id="aside">
         <h2><a href="/listofbook"> Spis książek</a></h2>
-        <h2><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('USER')"><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/addbook">Dodaj książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/user">Zarządzaj kontami</a></h2>
         <h2><a href="/logout" style="color: #FF9400; font-size: 22px;">Wyloguj sie</a></h2>
     </div>
 

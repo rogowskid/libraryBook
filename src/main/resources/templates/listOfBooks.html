@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -19,10 +20,11 @@
 
     <div id="aside">
         <h2><a href="/listofbook"> Spis książek</a></h2>
-        <h2><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('USER')"><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/addbook">Dodaj książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/user">Zarządzaj kontami</a></h2>
         <h2><a href="/logout" style="color: #FF9400; font-size: 22px;">Wyloguj sie</a></h2>
     </div>
-
     <div id="main">
         
         <p>Spis książek w naszej księgarni:</p>
@@ -38,15 +40,28 @@
 
 
 
-    <div id="bookList">
+    <div id="printList">
+        <table>
+            <tr>
+                <th>L.p</th> <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th>
+            </tr>
         <div th:each="book : ${books}">
 
-            <p th:text="${book.idBook + ' ' + book.nameBook + ' ' + book.author + ' ' + book.yearofPublication + ' ' + book.ISBN}"
-               id="testData" >
-            </p>
-            <button  th:attr="data-idBook=${book.idBook}" onclick="myFunction(this.getAttribute('data-idBook'))">Wypożycz</button>
+
+
+                <tr>
+                    <td th:text="${book.idBook}"/> <td th:text="${book.nameBook}"/> <td th:text="${book.author}"/> <td th:text="${book.yearofPublication}"/> <td th:text="${book.ISBN}"/>
+
+
+                    <td sec:authorize="hasAuthority('USER')">
+                        <button  sec:authorize="hasAuthority('USER')" th:attr="data-idBook=${book.idBook}" onclick="myFunction(this.getAttribute('data-idBook'))">Wypożycz</button>
+                    </td>
+                </tr>
 
         </div>
+            </table>
+
+    </div>
     </div>
 
 

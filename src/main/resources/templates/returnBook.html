@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -9,12 +10,10 @@
 
     <style>
 
-        button
+        #printList
         {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-
+            margin-top: 10px;
+            width: 60%;
         }
 
     </style>
@@ -28,23 +27,33 @@
 
     <div id="aside">
         <h2><a href="/listofbook"> Spis książek</a></h2>
-        <h2><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('USER')"><a href="/returnbook">Zwróć książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/addbook">Dodaj książke</a></h2>
+        <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/user">Zarządzaj kontami</a></h2>
         <h2><a href="/logout" style="color: #FF9400; font-size: 22px;">Wyloguj sie</a></h2>
     </div>
 
     <div id="main">
-        <h3 style="text-align:center" th:text="${emptyBorrowBook}"></h3>
-        <div th:each="borrowBook : ${borrowBooks}" id="nvm">
-            <p th:text="${borrowBook.nameBook + ' ' + borrowBook.authorBok + ' ' + borrowBook.yearofPub + ' ' + borrowBook.ISBN + ' ' + borrowBook.dateofRet}"
-               id="testData"  >
-            </p><button  th:attr="data-idUser=${borrowBook.idUser}" onclick="myFunction(this.getAttribute('data-idUser'))">Zwróć</button>
+        <div id="printList">
+        <table>
+            <tr>
+                <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th> <th>Data zwrotu</th>
+            </tr>
+            <div th:each="borrowBook : ${borrowBooks}">
 
-        </div>
+                <tr>
+                    <td th:text="${borrowBook.nameBook}"/> <td th:text="${borrowBook.authorBok}"/> <td th:text="${borrowBook.yearofPub}"/> <td th:text="${borrowBook.ISBN}"/> <td th:text="${borrowBook.dateofRet}"/>
 
 
+                    <td>
+                        <button  th:attr="data-idUser=${borrowBook.idUser}" onclick="myFunction(this.getAttribute('data-idUser'))">Zwróć</button>
+                    </td>
+                </tr>
 
+            </div>
+        </table>
 
-
+    </div>
     </div>
   
    

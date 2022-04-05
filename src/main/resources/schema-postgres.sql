@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS User_Data(
     name_User varchar(100)  NOT NULL,
     sur_Name_User varchar(100)  NOT NULL,
     date_Of_Birthday DATE  NOT NULL,
+    id_Role int(2),
+    FOREIGN KEY (id_Role) REFERENCES role_User(id_Role),
     PRIMARY KEY (id_User)
     );
 
@@ -34,3 +36,12 @@ CREATE TABLE IF NOT EXISTS recent_Book(
     FOREIGN KEY (id_Book) REFERENCES Book(id_Book)
 
     );
+
+CREATE TABLE IF NOT EXISTS role_User(
+
+    id_Role int(2) AUTO_INCREMENT,
+    nameRole varchar(100) not null,
+
+    primary key (id_Role)
+
+);

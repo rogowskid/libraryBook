@@ -1,3 +1,9 @@
+body
+{
+
+    margin: 0;
+
+}
 #header
 {
 
@@ -83,11 +89,11 @@ input
     margin-right: auto;
 }
 
-#bookList
+#printList
 {
     overflow: auto;
     margin: auto;
-    width: 70%;
+    width: 55%;
     border: 3px solid #162F4D;
     padding: 10px;
     max-height: 525px;
@@ -99,9 +105,17 @@ input
     flex-direction: column;
     align-items: center;
 }
-#testData
+td,th
 {
-    color: #FF9400;
+    color: #1F436E;
     font-family: Arial;
     font-weight: bold;
+    border: #FF9400;
+    border: 1px solid white;
+}
+table
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

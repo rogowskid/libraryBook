@@ -6,6 +6,7 @@ import com.example.demo.Repository.RecentBookRepository;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.BookService;
 import com.example.demo.Session.SessionController;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,10 +40,15 @@ public class BookController {
     }
 
 
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/addbook")
     public String index(Model model)
     {
+        String username = sessionController.getSessionUserLogin();
+        UserData user = userRepository.findByuserLogin(username);
+
+        System.out.println(user.getRoles());
+
         model.addAttribute("book", new Book());
         return "/addBook";
 

@@ -1,3 +1,9 @@
+body
+{
+
+    margin: 0;
+
+}
 #header
 {
 
@@ -30,6 +36,7 @@
     height: 940px;
     width: 89%;
     background-color:#A3CDFF;
+
   
    
 }
@@ -76,4 +83,10 @@
 
 }
 
+button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
+}
