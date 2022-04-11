@@ -35,6 +35,14 @@
             <input type="password" name="password"><br><br>
             <input type="submit" value="Zaloguj">
           </form>
+
+
+        <div id ="errorLogin" th:if="${param.error}">
+
+            <p>Błąd logowania! </p>
+
+        </div>
+
         <br>
         <br>
         <button id="buttonRegister" onclick="goRegister()">Rejestracja</button>

@@ -25,8 +25,11 @@
         <h2 sec:authorize="hasAuthority('ADMIN')"><a href="/user">Zarządzaj kontami</a></h2>
         <h2><a href="/logout" style="color: #FF9400; font-size: 22px;">Wyloguj sie</a></h2>
     </div>
+
     <div id="main">
-        
+
+        <div id="headerListOfBook" th:if = "${not #lists.isEmpty(books)}" >
+
         <p>Spis książek w naszej księgarni:</p>
 
         <p>Wpisz książke aby ją wyszukać:</p>
@@ -35,25 +38,18 @@
         <br>
         <button onclick="findBook()">Wyszukaj</button>
         <br>
+        </div>
+        <div  id="printList" th:if = "${not #lists.isEmpty(books)}" >
 
-
-
-
-
-    <div id="printList">
-        <table>
+            <table>
             <tr>
-                <th>L.p</th> <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th>
+                <th >L.p</th> <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th>
             </tr>
-        <div th:each="book : ${books}">
-
-
+        <div  th:each="book : ${books}">
 
                 <tr>
                     <td th:text="${book.idBook}"/> <td th:text="${book.nameBook}"/> <td th:text="${book.author}"/> <td th:text="${book.yearofPublication}"/> <td th:text="${book.ISBN}"/>
-
-
-                    <td sec:authorize="hasAuthority('USER')">
+                        <td sec:authorize="hasAuthority('USER')">
                         <button  sec:authorize="hasAuthority('USER')" th:attr="data-idBook=${book.idBook}" onclick="myFunction(this.getAttribute('data-idBook'))">Wypożycz</button>
                     </td>
                 </tr>
@@ -61,7 +57,8 @@
         </div>
             </table>
 
-    </div>
+        </div>
+        <p th:if = "${#lists.isEmpty(books)}"> Przykro nam aktualnie nie ma żadnej książki do wypożyczenia</p>
     </div>
 
 

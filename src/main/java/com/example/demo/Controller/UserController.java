@@ -3,10 +3,8 @@ package com.example.demo.Controller;
 import com.example.demo.Entity.UserData;
 import com.example.demo.Repository.RoleUserRepository;
 import com.example.demo.Repository.UserRepository;
-
 import com.example.demo.Session.SessionController;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,10 +35,6 @@ public class UserController {
 
     }
 
-
-
-
-
     @GetMapping("/logout")
     public String logout()
     {
@@ -54,9 +48,6 @@ public class UserController {
     @GetMapping("/main")
     public String index(Model model)
     {
-
-
-
 
         String username = sessionController.getSessionUserLogin();
         UserData user = userRepository.findByuserLogin(username);

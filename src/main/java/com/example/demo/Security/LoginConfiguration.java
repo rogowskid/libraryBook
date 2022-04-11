@@ -1,7 +1,10 @@
 package com.example.demo.Security;
 
 
+import com.example.demo.Repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,11 +25,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 
 
-    @Bean
-    public UserDetailsService userDetailsService()
-    {
-        return new MyUserDetalisService();
-    }
+
+    UserDetailsService userDetailsService;
+
+
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -38,7 +41,7 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
     {
 
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
 
@@ -57,34 +60,21 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                 .antMatchers("/addbook", "/user").access("hasAuthority('ADMIN')")
-
-
-
                 .anyRequest().authenticated()
                 .and()
-
                     .formLogin()
                     .loginPage("/login").defaultSuccessUrl("/main", true)
-
                     .usernameParameter("login")
                     .passwordParameter("password")
+                    .failureUrl("/login?error=true")
                     .permitAll()
                 .and()
-
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                     .logout().permitAll()
                     .logoutUrl("/logout")
                     .invalidateHttpSession(true);
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -102,6 +92,7 @@ public class LoginConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-
-
+    public UserDetailsService getUserDetailsService() {
+        return userDetailsService;
+    }
 }

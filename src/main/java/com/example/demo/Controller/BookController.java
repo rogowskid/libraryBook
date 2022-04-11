@@ -11,14 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 @Controller
-
 @RequestMapping
 public class BookController {
 
@@ -44,12 +40,9 @@ public class BookController {
     @GetMapping("/addbook")
     public String index(Model model)
     {
-        String username = sessionController.getSessionUserLogin();
-        UserData user = userRepository.findByuserLogin(username);
-
-        System.out.println(user.getRoles());
 
         model.addAttribute("book", new Book());
+
         return "/addBook";
 
     }
@@ -57,6 +50,7 @@ public class BookController {
     @PostMapping("/addbook")
     public String addBook(@ModelAttribute Book book)
     {
+
 
         bookRepository.save(book);
         return "redirect:/listofbook";
@@ -66,31 +60,36 @@ public class BookController {
     @GetMapping("/listofbook")
     public String printBOok(Model model)
     {
-        List<Book> book;
+        List<Object[]> books = null;
+        List<Book> book = new ArrayList<>();
 
-        book = bookRepository.findAll();
+        books = bookRepository.listBookQuery();
+
+        for(Object[] obj : books)
+        {
+            book.add(new Book(Long.parseLong(String.valueOf(obj[0])),obj[3].toString(),obj[2].toString(),Integer.parseInt(String.valueOf(obj[4])),obj[1].toString()));
+            //System.out.println("0: " + obj[0].toString() +" 1: " + obj[1].toString() + " 2: "+ obj[2].toString()+ " 3: "+ obj[3].toString() + " 4: " + obj[4].toString());
+        }
+
         model.addAttribute("books", book);
-
-
         return "/listOfBooks";
     }
 
     @GetMapping("/listofbookfilter")
     public String filterPrintBook(@RequestParam(name="id") String bookName, Model model)
     {
-        List<Book> book;
+        List<Book> book = new ArrayList<>();
+        List<Object[]> filterBooks = null;
+
+        filterBooks = bookRepository.filterListBookQuery(bookName);
 
 
-        book = bookRepository.findBynameBookContainsIgnoreCase(bookName);
-        if (book.size() > 0)
+        for(Object[] obj : filterBooks)
         {
-            model.addAttribute("books", book);
-        }
-        else
-        {
-            System.out.println("Nie ma takiej ksiazki");
+            book.add(new Book(Long.parseLong(String.valueOf(obj[0])),obj[3].toString(),obj[2].toString(),Integer.parseInt(String.valueOf(obj[4])),obj[1].toString()));
         }
 
+        model.addAttribute("books", book);
 
         return "/listOfBooks";
     }

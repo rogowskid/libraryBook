@@ -90,3 +90,12 @@ button
     margin-right: auto;
 
 }
+
+#errorLogin
+{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    font-family: Arial;
+    font-size: 36px;
+}

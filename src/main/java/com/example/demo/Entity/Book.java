@@ -18,14 +18,13 @@ public class Book {
     private String ISBN;
 
 
-    public Book(String nameBook, String author, int yearofPublication, String ISBN) {
+    public Book(Long idBook, String nameBook, String author, int yearofPublication, String ISBN) {
+        this.idBook = idBook;
         this.nameBook = nameBook;
         this.author = author;
         this.yearofPublication = yearofPublication;
         this.ISBN = ISBN;
     }
-
-
 
     public Long getIdBook() {
         return idBook;

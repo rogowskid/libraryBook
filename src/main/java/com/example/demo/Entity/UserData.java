@@ -2,11 +2,8 @@ package com.example.demo.Entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.cdi.Eager;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,15 +28,7 @@ public class UserData implements Serializable {
     )
     private Set<RoleUser> roles = new HashSet<>();
 
-    public UserData(String userLogin, String userPassword, String nameUser, String surNameUser, String dateOfBirthday) {
-        this.userLogin = userLogin;
-        this.userPassword = userPassword;
-        this.nameUser = nameUser;
-        this.surNameUser = surNameUser;
-        this.dateOfBirthday = dateOfBirthday;
 
-
-    }
 
     public void setRoles(Set<RoleUser> roles) {
 
