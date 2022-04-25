@@ -43,7 +43,7 @@
 
             <table>
             <tr>
-                <th >L.p</th> <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th>
+                <th >Pozycja w księgarni</th> <th>Nazwa książki</th> <th>Autor książki</th> <th>Rok publikacji</th> <th>Numer ISBN</th>
             </tr>
         <div  th:each="book : ${books}">
 
@@ -85,6 +85,11 @@ function findBook()
 {
     let nameBook = document.getElementById('filterPosition').value;
     window.location.href="/listofbookfilter?id=" + nameBook;
+}
+
+
+
+
 }
 
 </script>

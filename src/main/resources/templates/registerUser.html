@@ -26,23 +26,27 @@
 
 <div id="main">
 
-    <form th:action="@{/register}" th:object="${addUser}"  method="POST">
+    <form th:action="@{/register}" th:object="${addUser}" onkeyup="checkData()" method="POST">
         <label>Login:</label>
         <br>
-        <input type="text" th:field="*{userLogin}"><br>
+        <input type="text" id="login" th:field="*{userLogin}"><br>
         <label>Hasło:</label>
         <br>
-        <input type="password" th:field="*{userPassword}"><br>
+        <input type="password" id="password" onkeyup="checkPassword()" th:field="*{userPassword}"><br>
+        <label>Powtórz hasło:</label>
+        <br>
+        <input type="password" id="confirmPassword" onkeyup="checkPassword()"><br>
+        <p id='message'></p>
         <label>Imie:</label>
         <br>
-        <input type="text" th:field="*{nameUser}"><br>
+        <input type="text" id="nameUser" th:field="*{nameUser}"><br>
         <label>Nazwisko:</label>
         <br>
-        <input type="text" th:field="*{surNameUser}"><br>
+        <input type="text" id="surNameUser" th:field="*{surNameUser}"><br>
         <label>Data urodzenia:</label>
         <br>
-        <input type="date" th:field="*{dateOfBirthday}"><br>
-        <input type="submit" value="Zarejestruj">
+        <input type="date" id="myDate" onclick="setStateDate()" th:field="*{dateOfBirthday}"><br>
+        <input type="submit" id="submit" style="display: none;" value="Zarejestruj">
     </form>
     <br>
     <br>
@@ -66,6 +70,72 @@
             window.location="/login";
 
     }
+
+
+
+    function setStateDate()
+    {
+        document.getElementById('myDate').addEventListener('change', function() {
+
+            if (this.value == null)
+            {
+                document.getElementById('submit').disabled=true;
+            }
+            else
+            {
+                document.getElementById('submit').disabled=false;
+            }
+        });
+    }
+
+
+    function checkData()
+    {
+
+        // console.log(document.getElementById('login').value)
+        // console.log(document.getElementById('password').value)
+        // console.log(document.getElementById('confirmPassword').value)
+        // console.log(document.getElementById('nameUser').value)
+        // console.log(document.getElementById('surNameUser').value)
+        // console.log(document.getElementById("myDate").value)
+
+
+
+        document.getElementById('submit').style.display="";
+
+        if ((document.getElementById('login').value) && (document.getElementById('password').value) && (document.getElementById('confirmPassword').value)
+        && (document.getElementById('nameUser').value) && (document.getElementById('surNameUser').value) && (document.getElementById("myDate").value) && (document.getElementById("myDate").value) != "")
+        {
+            document.getElementById('submit').disabled=false;
+
+        }
+        else
+        {
+            document.getElementById('submit').disabled=true;
+
+        }
+    }
+
+    function checkPassword() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirmPassword').value) {
+            document.getElementById('password').style.backgroundColor = 'green';
+            document.getElementById('confirmPassword').style.backgroundColor = 'green';
+            //document.getElementById('message').color = 'green';
+            //document.getElementById('message').innerHTML = 'Hasła są takie same';
+            document.getElementById('submit').disabled=false;
+        } else {
+            // document.getElementById('message').style.color = 'red';
+            // document.getElementById('message').innerHTML = 'Hasła nie są poprawne!';
+            document.getElementById('confirmPassword').style.backgroundColor = 'red';
+            document.getElementById('password').style.backgroundColor = 'red';
+            document.getElementById('submit').disabled=true;
+        }
+
+
+    }
+
+
 
 </script>
 </body>

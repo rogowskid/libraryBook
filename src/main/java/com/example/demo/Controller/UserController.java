@@ -27,7 +27,7 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String indexLogin(Model model)
+    public String indexLogin()
     {
 
 

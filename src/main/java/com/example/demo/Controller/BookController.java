@@ -68,7 +68,6 @@ public class BookController {
         for(Object[] obj : books)
         {
             book.add(new Book(Long.parseLong(String.valueOf(obj[0])),obj[3].toString(),obj[2].toString(),Integer.parseInt(String.valueOf(obj[4])),obj[1].toString()));
-            //System.out.println("0: " + obj[0].toString() +" 1: " + obj[1].toString() + " 2: "+ obj[2].toString()+ " 3: "+ obj[3].toString() + " 4: " + obj[4].toString());
         }
 
         model.addAttribute("books", book);

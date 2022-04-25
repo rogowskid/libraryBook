@@ -19,7 +19,7 @@ public class BookService {
     UserRepository userRepository;
     final SessionController sessionController;
 
-    public BookService(RecentBookRepository recentBookRepository, UserRepository userRepository, HttpServletRequest request, SessionController sessionController) {
+    public BookService(RecentBookRepository recentBookRepository, UserRepository userRepository, SessionController sessionController) {
         this.recentBookRepository = recentBookRepository;
         this.userRepository = userRepository;
         this.sessionController = sessionController;
